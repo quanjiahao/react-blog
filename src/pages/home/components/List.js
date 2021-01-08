@@ -1,32 +1,39 @@
-import React, { Component } from 'react'
-import {ListItem,ListInfo} from '../style'
+import React, { PureComponent } from 'react'
+import {ListItem,ListInfo,LoadMore} from '../style'
 import {connect} from 'react-redux'
-class List extends Component {
+import {actionCreators} from '../store'
+class List extends PureComponent {
     render() {
-        const {list} = this.props;
+        const {list ,getMoreList,page} = this.props;
         return (
             <div>
                 {
-                    list.map((item)=>{
-                        return (
-                            <ListItem key ={item.get('id')}>
-                    <img className='pic' src={item.get('imgUrl')}></img>
-                    <ListInfo>
-                        <h3 className='title'>{item.get('title')}</h3>
-                        <p className='desc'>
-                        {item.get('desc')}
-                        </p>
-                    </ListInfo>
-                </ListItem>
-                        )
-                    })
+                list.map((item,index)=>{
+                    return (
+                        <a key={index} href ='/detail'>
+                        <ListItem key ={index}>
+                            <img className='pic' src={item.get('imgUrl')}></img>
+                            <ListInfo>
+                                <h3 className='title'>{item.get('title')}</h3>
+                                <p className='desc'>{item.get('desc')}</p>
+                            </ListInfo>
+                        </ListItem>
+                         </a>
+                    );
+                })
                 }
-                
+                <LoadMore onClick={()=>getMoreList(page)}>More Article</LoadMore>
             </div>
         )
     }
 }
 const mapState =(state) =>({
-    list:state.get('home').get('articleList')
+    list:state.get('home').get('articleList'),
+    page:state.get('home').get('articlePage')
 })
-export default  connect(mapState)(List);
+const mapDipatch = (dispatch)=>({ 
+    getMoreList(page){
+        dispatch(actionCreators.getMoreList())
+    }
+})
+export default  connect(mapState,mapDipatch)(List);

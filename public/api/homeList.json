@@ -1,0 +1,16 @@
+{
+    "success":true,
+    "data":[{
+        "id":5,
+        "title":"How writers can earn more",
+        "desc": "The fact is, clients are always going to try to get things cheap. It’s up to writers to educate clients about what they’re asking for, and what’s fair pay for what they want you to write.",
+        "imgUrl":"https://www.queensu.ca/artsci_online/sites/default/files/styles/hero_image/public/img/course/cwri_295-lamp.jpg?itok=4lEszrEF"
+        },{
+        "id":6,
+        "title":"Getting the win",
+        "desc": "The fact is, articles and article-style blog posts convey more authority. They impress more of your client’s customers. The projects will be more successful, and those clients will be more likely to hire you back to write more.",
+        "imgUrl":"https://searchengineland.com/figz/wp-content/seloads/2018/09/writer-writing-ss-1920-800x450.jpg"
+            }
+   
+]
+}
